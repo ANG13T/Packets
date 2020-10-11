@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -35,6 +36,7 @@ const config = {
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     MatIconModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(config),

@@ -1,9 +1,24 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="!loading">
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
       <mat-icon>menu</mat-icon>
     </button>
     <span>Packets</span>
     <span class="example-spacer"></span>
-    <button mat-raised-button color="primary" (click)="googleSignUp()">Sign Up</button>
-    <button mat-raised-button color="primary" (click)="googleSignUp()">Log In</button>
+    <div class="actionBar" *ngIf="!auth.loggedIn">
+      <button mat-raised-button color="primary" (click)="googleSignUp()">Sign Up</button>
+      <button mat-raised-button color="primary" (click)="googleSignUp()">Log In</button>
+    </div>
+
+    <div class="actionBar" *ngIf="auth.loggedIn">
+      <p>profile here</p>
+    </div>
+
 </mat-toolbar>
+
+
+<router-outlet *ngIf="!loading"></router-outlet>
+
+<div class="spinnerStuff" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+  <h1 class="loadingText">Loading....</h1>
+</div>

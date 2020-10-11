@@ -24,7 +24,7 @@ export class AuthService {
         if(user){
           console.log("logged in");
           this.loggedIn = true;
-          return this.afs.doc<User>(`user/${user.uid}`).valueChanges();
+          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         }else{
           this.loggedIn = false;
           return of(null);
@@ -53,9 +53,6 @@ export class AuthService {
       photoURL: user.photoURL
     }
 
-    userRef.set(userData, {merge: true});
-
-    this.router.navigate(['/profile']);
-    return;
+    return userRef.set(userData, {merge: true});
   }
 }

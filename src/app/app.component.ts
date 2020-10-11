@@ -38,7 +38,9 @@ export class AppComponent{
   }
 
   async googleSignUp(){
-    await this.auth.googleSignin();
+    await this.auth.googleSignin().then(() => {
+      this._router.navigate(['/profile']);
+    });
   }
 
 

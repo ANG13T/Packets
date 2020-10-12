@@ -16,17 +16,18 @@ export class CreatePacketDialogComponent implements OnInit {
   }
 
   createPacket(){
-    this.afs.firestore.collection('packets').add({
+    let newPacket = {
       title: this.title,
       username: this.data.username,
       packetAmount: 0,
       userUID: this.data.userUID
-    }).catch(err => {
+    }
+    this.afs.firestore.collection('packets').add(newPacket).catch(err => {
       console.log(err);
       this.dialogRef.close('error');
     }
   ).then(() => {
-      this.dialogRef.close('success');
+      this.dialogRef.close(newPacket);
     })
 
   }

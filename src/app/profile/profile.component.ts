@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit{
       this.uid = userProfile.uid;
       console.log("uid: " + this.uid);
       this.username = userProfile.name;
-      this.afs.firestore.collection('packets').where('userId', '==', this.uid).limit(10).get().then(querySnapshot =>{
+      this.afs.firestore.collection('packets').where('userUID', '==', this.uid).limit(10).get().then(querySnapshot =>{
         if (querySnapshot.empty) {
           console.log('no data found');
         }else{
@@ -58,7 +58,9 @@ export class ProfileComponent implements OnInit{
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`); //if new packet reload else dont reload
+      if(result != 'error'){
+        this.profilePackets.push(result as Packet);
+      }
     });
   }
 

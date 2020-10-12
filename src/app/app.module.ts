@@ -2,11 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,6 +19,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CreatePacketDialogComponent } from './dialogs/create-packet-dialog/create-packet-dialog.component';
+
 
 const config = {
   apiKey: "AIzaSyBNvhfsb-selMCQjromoXQd8YZzUGLCPiI",
@@ -32,14 +37,18 @@ const config = {
   declarations: [
     AppComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    CreatePacketDialogComponent,
+    CreatePacketDialogComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    MatInputModule,
     MatProgressSpinnerModule,
     MatIconModule,
     BrowserAnimationsModule,
@@ -48,7 +57,8 @@ const config = {
     AngularFireAuthModule, // auth
     AngularFireStorageModule, // storage
     AvatarModule,
-    MatMenuModule
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

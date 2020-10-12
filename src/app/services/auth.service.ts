@@ -12,7 +12,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 })
 export class AuthService {
   user$: Observable<any>;
-  loggedIn : boolean;
+  loggedIn : boolean = false;
 
   constructor(
     private afAuth: AngularFireAuth,

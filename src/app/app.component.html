@@ -5,8 +5,8 @@
     <span>Packets</span>
     <span class="example-spacer"></span>
     <div class="actionBar" *ngIf="!auth.loggedIn">
-      <button mat-raised-button color="primary" (click)="googleSignUp()">Sign Up</button>
-      <button mat-raised-button color="primary" (click)="googleSignUp()">Log In</button>
+      <button mat-raised-button color="primary" (click)="googleSignUp()" class="actionButton">Sign Up</button>
+      <button mat-raised-button color="primary" (click)="googleSignUp()" class="actionButton">Log In</button>
     </div>
 
     <div class="actionBar" *ngIf="auth.loggedIn">
@@ -31,7 +31,7 @@
 
 <router-outlet *ngIf="!loading"></router-outlet>
 
-<div class="spinnerStuff" *ngIf="loading">
+<div class="spinnerStuff" *ngIf="loading && !isHome" >
   <mat-spinner></mat-spinner>
   <h1 class="loadingText">Loading....</h1>
 </div>

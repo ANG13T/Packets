@@ -14,10 +14,12 @@ export class AppComponent{
   photoURL: String;
   email: String;
   uid:String;
+  isHome: boolean;
   loading: boolean;
 
 
   constructor(public auth: AuthService, private _router: Router){
+    this.isHome = _router.url == '/';
     this.loading = true;
     this.auth.user$.subscribe(async (userProfile) => {
       if(!userProfile){

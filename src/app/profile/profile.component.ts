@@ -13,36 +13,47 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class ProfileComponent implements OnInit{
   uid:String;
+  username: String;
   profilePackets: Packet[] = [];
 
 
   constructor(private dialog: MatDialog, private auth: AuthService, private router: Router, private afs: AngularFirestore)  {
+  }
+
+   ngOnInit(){
     this.auth.user$.subscribe(async (userProfile) => {
       if(!userProfile){
-        router.navigate(['/']);
+        console.log("not logged in");
+        this.router.navigate(['/']);
         return;
       }
 
       this.uid = userProfile.uid;
-    })
-   }
-
-   ngOnInit(){
-    this.afs.collection('packets').where('userId', '==', this.uid).limit(10).get().then(querySnapshot =>{
-      if (querySnapshot.empty) {
-        console.log('no data found');
-      }else{
-        querySnapshot.forEach(documentSnapshot => {
-          this.profilePackets.push(documentSnapshot);
+      console.log("uid: " + this.uid);
+      this.username = userProfile.name;
+      this.afs.firestore.collection('packets').where('userId', '==', this.uid).limit(10).get().then(querySnapshot =>{
+        if (querySnapshot.empty) {
+          console.log('no data found');
+        }else{
+          querySnapshot.forEach(documentSnapshot => {
+            let newPacket = {
+              uid: documentSnapshot.id,
+              title: documentSnapshot.data().title,
+              username: documentSnapshot.data().username,
+              packetAmount: documentSnapshot.data().packetAmount
+            } as Packet;
+            this.profilePackets.push(newPacket);
+          })
         }
-      }
+      });
     });
    }
 
   openFileDialog(){
     const dialogRef = this.dialog.open(CreatePacketDialogComponent, {
       data: {
-        uid: this.uid
+        userUID: this.uid,
+        username: this.username
       }
     });
 

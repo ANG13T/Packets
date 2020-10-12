@@ -1,7 +1,9 @@
 <div class="main">
   <h1>My Packets</h1>
   <div class="packets">
-
+    <ng-container *ngFor="let packet of profilePackets">
+      <mat-card class="cardListItem">{{packet.title}}</mat-card>
+    </ng-container>
   </div>
 
   <div class="button-container">

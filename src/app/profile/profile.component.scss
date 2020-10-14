@@ -4,21 +4,17 @@
   position: absolute;
 }
 
+.content{
+  align-items: center !important;
+}
 
-.cardList {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+
+.packetCard{
+  align-self: center;
 }
-/* Column Gap */
-.cardList > * {
-  box-sizing: border-box;
-}
-.cardList > *:not(:last-child) {
-  margin-right: 32px;
-}
-/* Item sizing */
-.cardListItem {
-  flex: 0 1 calc(33.3% - 32px);
+
+.packets{
+  margin-left: 5rem !important;
+  margin-right: 5rem !important;
+  margin:auto;
 }

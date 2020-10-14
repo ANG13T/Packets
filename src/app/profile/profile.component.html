@@ -1,9 +1,13 @@
 <div class="main">
   <h1>My Packets</h1>
   <div class="packets">
-    <ng-container *ngFor="let packet of profilePackets">
-      <mat-card class="cardListItem">{{packet.title}}</mat-card>
-    </ng-container>
+    <div class="content" fxLayout="row wrap" fxLayoutGap="2rem grid">
+      <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let packet of profilePackets">
+        <mat-card class="mat-elevation-z4 packetCard">
+          <h1>{{packet.title}}</h1>
+        </mat-card>
+      </div>
+    </div>
   </div>
 
   <div class="button-container">
